@@ -34,7 +34,7 @@ def read_authors(
     return authors
 
 
-@app.get("authors/{author_id}", response_model=Author)
+@app.get("authors/{author_id}/", response_model=Author)
 def read_author(author_id: int, db: Session = Depends(get_db)) -> Author:
     author = crud.get_single_author(db, author_id)
     return author
@@ -55,7 +55,7 @@ def read_books(
     return books
 
 
-@app.get("books/{author_id}", response_model=List[Author])
+@app.get("books/{author_id}/", response_model=List[Author])
 def read_books_by_author_id(
         author_id: int,
         db: Session = Depends(get_db)
